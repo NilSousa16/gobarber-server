@@ -5,7 +5,9 @@
 import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
-import 'express-async-errors'
+// API que irá se comunicar com React necessida do CORS
+import cors from 'cors';
+import 'express-async-errors';
 
 import routes from './routes';
 import uploadConfig from './config/upload';
@@ -14,6 +16,12 @@ import './database'
 import AppError from './errors/AppError';
 
 const app = express();
+
+/** Deve ser colocado após o app
+ *
+ * CORS - irá evitar que sites não confiavéis acessem a aplicação (aplicações web - browsers)
+ */
+app.use(cors());
 
 app.use(express.json());
 // Servindo arquivo estáticos
