@@ -3,10 +3,10 @@ import path from 'path';
 // File system do node
 import fs from 'fs';
 
-import uploadConfig from '../config/upload';
+import uploadConfig from '@config/upload';
 
-import AppError from '../errors/AppError';
-import User from '../models/User';
+import AppError from '@shared/errors/AppError';
+import User from '../infra/typeorm/entities/User';
 
 interface Request{
   user_id: string;
