@@ -9,11 +9,14 @@ const tmpFolder = path.resolve(__dirname, '..', '..', 'tmp');
 
 export default {
   // Para acessar o caminho em outros arquivos
-  directory: tmpFolder,
+  tmpFolder,
+  uploadsFolder: path.resolve(tmpFolder, 'uploads'),
+
   // Armazenamento em disco local
   storage: multer.diskStorage({
     //__dirname - caminho completo até o arquivo em uso
     destination: tmpFolder,
+
     // nome que o arquivo vai receber
     filename(request, file, callback) {
       const fileHash = crypto.randomBytes(10).toString('hex');
