@@ -25,7 +25,7 @@ describe('SendForgotPasswordEmail', () => {
     );
   });
 
-  it('should be able to to recove the password using the email', async () => {
+  it('should be able to recove the password using the email', async () => {
     const sendMail = jest.spyOn(fakeMailProvider, 'sendMail');
 
     await fakeUsersRepository.create({
@@ -63,5 +63,5 @@ describe('SendForgotPasswordEmail', () => {
     });
 
     expect(gerenateToken).toHaveBeenCalledWith(user.id);
-  })
-})
+  });
+});
