@@ -27,7 +27,7 @@ app.use(cors());
 
 app.use(express.json());
 // Servindo arquivo estáticos
-app.use('/files', express.static(uploadConfig.directory));
+app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(routes);
 
 // Middleware para tratativa de erros

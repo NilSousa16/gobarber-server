@@ -3,7 +3,6 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 export default class CreateUserTokens1602632068216 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
       await queryRunner.createTable(
         new Table({
           name: 'user_tokens',
@@ -13,13 +12,13 @@ export default class CreateUserTokens1602632068216 implements MigrationInterface
               type: 'uuid',
               isPrimary: true,
               generationStrategy: 'uuid',
-              default: 'uuid_generation_v4()',
+              default: 'uuid_generate_v4()',
             },
             {
               name: 'token',
               type: 'uuid',
               generationStrategy: 'uuid',
-              default: 'uuid_generation_v4()',
+              default: 'uuid_generate_v4()',
             },
             {
               name: 'user_id',
