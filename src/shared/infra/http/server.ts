@@ -3,6 +3,7 @@
  * Necessário principalmente por causa do decorator
  */
 import 'reflect-metadata';
+import 'dotenv/config';
 
 import express, { Request, Response, NextFunction } from 'express';
 // API que irá se comunicar com React necessida do CORS
