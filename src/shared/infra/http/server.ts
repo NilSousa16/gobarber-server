@@ -7,6 +7,8 @@ import 'reflect-metadata';
 import express, { Request, Response, NextFunction } from 'express';
 // API que irá se comunicar com React necessida do CORS
 import cors from 'cors';
+// Mostrar mensagens de erros de validação do back-end
+import { errors } from 'celebrate';
 import 'express-async-errors';
 
 import routes from './routes';
@@ -29,6 +31,9 @@ app.use(express.json());
 // Servindo arquivo estáticos
 app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(routes);
+
+// Ante do do global
+app.use(errors());
 
 // Middleware para tratativa de erros
 // Deve ser colocado depois do app.use(routes);
