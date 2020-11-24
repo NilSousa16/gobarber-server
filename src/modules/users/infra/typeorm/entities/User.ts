@@ -1,5 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn} from 'typeorm';
 
+import { Exclude, Expose } from 'class-transformer';
+
 @Entity('users')
 class User {
   @PrimaryGeneratedColumn('uuid')
@@ -12,6 +14,7 @@ class User {
   email: string;
 
   @Column()
+  @Exclude() // Não enviado para o front-end (class-transformer)
   password: string;
 
   @Column()
@@ -22,6 +25,11 @@ class User {
 
   @UpdateDateColumn()
   update_at: Date;
+
+  @Expose({ name: 'avatar_url' }) // Expõe um campo não existente originalmente
+  getAvatarUrl(): string | null {
+    return this.avatar ? `${process.env.APP_API_URL}/files/${this.avatar}` : null;
+  }
 
 }
 
